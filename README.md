@@ -25,7 +25,7 @@
 5. Generate application key.
 
     ```shell
-    `php artisan key:generate`
+    php artisan key:generate
     ```
 
 6. Edit `.env` with your database and email credentials.
