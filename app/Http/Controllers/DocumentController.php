@@ -97,7 +97,9 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        //
+        return view('documents.edit', [
+            'document' => $document
+        ]);
     }
 
     /**
@@ -109,23 +111,22 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        $validator = Validator::make($request->all(), [
-            'password' => [
+        $request->validate([
+            'name'      => [
                 'required',
-                new ValidatePassword
+                'string',
+                'max:255'
             ],
         ]);
 
-        if ($validator->fails()) {
+        $document->update([
+            'name'  => $request->input('name')
+        ]);
 
-            $request->merge([
-                'action'    => $request->url()
-            ]);
+        session()->flash('app::class', 'alert-success');
+        session()->flash('app::message', __('Data successfully updated to the database.'));
 
-            return back()
-                ->withErrors($validator, 'documentsUpdate')
-                ->withInput();
-        }
+        return redirect()->route('documents.index');
     }
 
     /**

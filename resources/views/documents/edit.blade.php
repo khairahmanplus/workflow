@@ -25,7 +25,7 @@
                         @endif
                     </div>
 
-                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Save changes') }}</button>
                 </form>
             </section>
 
