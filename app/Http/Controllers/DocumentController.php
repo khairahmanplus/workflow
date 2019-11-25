@@ -88,7 +88,9 @@ class DocumentController extends Controller
     {
         $document->loadMissing('documentActivities');
 
-        return view('documents.show', compact('document'));
+        return view('documents.show', [
+            'document'  => $document
+        ]);
     }
 
     /**
