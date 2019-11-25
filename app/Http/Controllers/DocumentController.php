@@ -31,7 +31,9 @@ class DocumentController extends Controller
     {
         $documents = Document::paginate();
 
-        return view('documents.index', compact('documents'));
+        return view('documents.index', [
+            'documents' => $documents
+        ]);
     }
 
     /**
